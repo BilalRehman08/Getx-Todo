@@ -143,12 +143,15 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Container(
-              child: Image.asset("assets/google.png"),
-              height: 60,
-              width: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(500)),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                child: Image.asset("assets/google.png"),
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(500)),
+                ),
               ),
             ),
           ],
