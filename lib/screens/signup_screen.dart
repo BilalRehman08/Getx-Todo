@@ -1,11 +1,13 @@
+import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Signup extends StatefulWidget {
-  @override
-  _SignupState createState() => _SignupState();
-}
-
-class _SignupState extends State<Signup> {
+class Signup extends GetWidget<FirebaseController> {
+  final FirebaseController controller = FirebaseController();
+  final TextEditingController firstname = TextEditingController();
+  final TextEditingController lastname = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +44,7 @@ class _SignupState extends State<Signup> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: firstname,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                             fontSize: 13,
@@ -65,6 +68,7 @@ class _SignupState extends State<Signup> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: lastname,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                             fontSize: 13,
@@ -88,12 +92,13 @@ class _SignupState extends State<Signup> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: email,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                             fontSize: 13,
                             color: Colors.grey[300],
                           ),
-                          hintText: 'Username',
+                          hintText: 'Email',
                           prefixIcon: Icon(Icons.person, color: Colors.black),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.only(top: 5),
@@ -111,6 +116,7 @@ class _SignupState extends State<Signup> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: password,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
@@ -136,7 +142,11 @@ class _SignupState extends State<Signup> {
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
                 child: Text('Register'),
-                onPressed: () {},
+                onPressed: () {
+                  controller.createUser(
+                      firstname.text, lastname.text, email.text, password.text);
+                  
+                },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff6035D0),
                     textStyle: TextStyle(fontSize: 17)),
