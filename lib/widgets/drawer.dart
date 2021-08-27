@@ -33,13 +33,30 @@ Widget drawerr() {
           ),
         ),
         ListTile(
-          title: Text(
-            'Service Orders',
+          contentPadding: const EdgeInsets.only(left: 15),
+          leading: Icon(
+            Icons.add,
+            size: 40,
+            color: Colors.black,
+          ),
+          title: Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Text(
+              'New Task',
+              style: TextStyle(fontSize: 17),
+            ),
           ),
         ),
         ListTile(
+          contentPadding: const EdgeInsets.only(left: 25),
+          leading: Icon(
+            Icons.logout,
+            size: 28,
+            color: Colors.black,
+          ),
           title: Text(
-            'Settings',
+            'Logout',
+            style: TextStyle(fontSize: 17),
           ),
         ),
       ],
