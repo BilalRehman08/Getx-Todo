@@ -1,11 +1,11 @@
+import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends GetWidget<FirebaseController> {
+  final FirebaseController controller = FirebaseController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +42,7 @@ class _LoginState extends State<Login> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: email,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                             fontSize: 13,
@@ -65,6 +66,7 @@ class _LoginState extends State<Login> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
+                        controller: password,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
@@ -90,7 +92,9 @@ class _LoginState extends State<Login> {
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
                 child: Text('Login'),
-                onPressed: () {},
+                onPressed: () {
+                  controller.login(email.text, password.text);
+                },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff6035D0),
                     textStyle: TextStyle(fontSize: 17)),
