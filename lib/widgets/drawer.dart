@@ -11,6 +11,9 @@ Widget drawerr(context) {
           child: DrawerHeader(
             child: Column(
               children: [
+                SizedBox(
+                  height: 10,
+                ),
                 Center(
                     child: CircleAvatar(
                   radius: 40,
