@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+
+enum Priority { red, orange, blue, green }
 
 class AddTask extends StatefulWidget {
   @override
@@ -6,6 +9,7 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
+  Priority _character = Priority.red;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +63,67 @@ class _AddTaskState extends State<AddTask> {
           ),
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Text("Priority"),
+            child: Text("${_character}"),
           ),
           Container(
             color: Colors.white,
             height: 50,
+            child: Row(
+              children: [
+                Radio<Priority>(
+                  fillColor:
+                      MaterialStateColor.resolveWith((states) => Colors.red),
+                  activeColor: Colors.red,
+                  focusColor: Colors.red,
+                  value: Priority.red,
+                  groupValue: _character,
+                  onChanged: (Priority value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+                Radio<Priority>(
+                  fillColor:
+                      MaterialStateColor.resolveWith((states) => Colors.orange),
+                  activeColor: Colors.orange,
+                  focusColor: Colors.orange,
+                  value: Priority.orange,
+                  groupValue: _character,
+                  onChanged: (Priority value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+                Radio<Priority>(
+                  fillColor:
+                      MaterialStateColor.resolveWith((states) => Colors.blue),
+                  activeColor: Colors.blue,
+                  focusColor: Colors.blue,
+                  value: Priority.blue,
+                  groupValue: _character,
+                  onChanged: (Priority value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+                Radio<Priority>(
+                  fillColor:
+                      MaterialStateColor.resolveWith((states) => Colors.green),
+                  activeColor: Colors.green,
+                  focusColor: Colors.green,
+                  value: Priority.green,
+                  groupValue: _character,
+                  onChanged: (Priority value) {
+                    setState(() {
+                      _character = value;
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.2,
