@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "852082397871",
+    "project_id": "getxtodoauth",
+    "storage_bucket": "getxtodoauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852082397871:android:cd0b8233cab7093711fa5a",
+        "android_client_info": {
+          "package_name": "com.example.circadia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852082397871-8okpcvmffgs4j8qcpke9l64kfajs2gdb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.circadia",
+            "certificate_hash": "9dbbce08462ae577e8ba064c52adf3b94b25efa7"
+          }
+        },
+        {
+          "client_id": "852082397871-kkkbvcnn8f1m4o068b14265soceduc2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlRiWkL3tsqHZSPYWPqEU638qd4UBdpgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852082397871-kkkbvcnn8f1m4o068b14265soceduc2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

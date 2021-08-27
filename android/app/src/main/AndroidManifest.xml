@@ -3,6 +3,7 @@
    <application
         android:label="circadia"
         android:icon="@mipmap/ic_launcher">
+        android:requestLegacyExternalStoarage="true"
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
