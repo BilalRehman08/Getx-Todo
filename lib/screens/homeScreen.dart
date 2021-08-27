@@ -13,13 +13,13 @@ class _HomeState extends State<Home> {
       key: scaffoldkey,
       appBar: AppBar(
         title: Container(
-          padding: const EdgeInsets.only(top: 15),
-          height: 50,
+          padding: const EdgeInsets.only(top: 15, bottom: 15),
+          height: 60,
           width: 110,
           child: Image.asset("assets/ThingsTOD.png"),
         ),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 15.0, top: 15),
+          padding: const EdgeInsets.only(left: 15.0, top: 16, bottom: 16),
           child: GestureDetector(
               onTap: () {
                 scaffoldkey.currentState.openDrawer();
@@ -30,17 +30,38 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           Container(
-            padding: const EdgeInsets.only(right: 15, top: 15),
-            height: 40,
+            padding: const EdgeInsets.only(right: 15, top: 16, bottom: 16),
             child: Image.asset("assets/addd.png"),
           ),
         ],
         bottom: PreferredSize(
-            child: Icon(
-              Icons.linear_scale,
-              size: 60.0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 15, bottom: 10),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(3)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, bottom: 5),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[300],
+                      ),
+                      hintText: 'Search Task',
+                      suffixIcon: Icon(Icons.search, color: Color(0xff6035D0)),
+
+                      border: InputBorder.none,
+                      // contentPadding: EdgeInsets.only(top: 5),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            preferredSize: Size.fromHeight(40.0)),
+            preferredSize: Size.fromHeight(60.0)),
       ),
       drawer: Drawer(
         child: ListView(
