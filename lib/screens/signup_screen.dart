@@ -145,7 +145,6 @@ class Signup extends GetWidget<FirebaseController> {
                 onPressed: () {
                   controller.createUser(
                       firstname.text, lastname.text, email.text, password.text);
-                  
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff6035D0),
@@ -200,7 +199,9 @@ class Signup extends GetWidget<FirebaseController> {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                controller.google_signIn();
+              },
               child: Container(
                 child: Image.asset("assets/google.png"),
                 height: 60,
