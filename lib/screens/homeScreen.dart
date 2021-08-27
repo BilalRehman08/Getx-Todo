@@ -1,3 +1,4 @@
+import 'package:circadia/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -59,50 +60,7 @@ class _HomeState extends State<Home> {
             ),
             preferredSize: Size.fromHeight(60.0)),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              child: Column(
-                children: [
-                  Center(
-                    child: Image(
-                      image: AssetImage("assets/Logo.png"),
-                      fit: BoxFit.contain,
-                      height: 96,
-                      width: 96,
-                    ),
-                  ),
-                  Text(
-                    "Vigisoft",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  Text(
-                    "www.vigisoft.com.br",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Service Orders',
-              ),
-            ),
-            ListTile(
-              title: Text(
-                'Settings',
-              ),
-            ),
-          ],
-        ),
-      ),
+      drawer: drawerr(),
       body: Center(child: Text("data")),
     );
   }
