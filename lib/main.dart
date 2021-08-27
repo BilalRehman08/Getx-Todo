@@ -1,4 +1,5 @@
-import 'package:circadia/screens/homeScreen.dart';
+import 'package:circadia/screens/Addtask.dart';
+// import 'package:circadia/screens/homeScreen.dart';
 // import 'package:circadia/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff6035D0),
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: AddTask(),
     );
   }
 }
