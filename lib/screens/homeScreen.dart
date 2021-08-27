@@ -43,20 +43,16 @@ class _HomeState extends State<Home> {
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(3)),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, bottom: 5),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[300],
-                      ),
-                      hintText: 'Search Task',
-                      suffixIcon: Icon(Icons.search, color: Color(0xff6035D0)),
-
-                      border: InputBorder.none,
-                      // contentPadding: EdgeInsets.only(top: 5),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[300],
                     ),
+                    hintText: 'Search Task',
+                    suffixIcon: Icon(Icons.search, color: Color(0xff6035D0)),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(left: 10, top: 5),
                   ),
                 ),
               ),
