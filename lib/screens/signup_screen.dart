@@ -26,7 +26,7 @@ class _SignupState extends State<Signup> {
               height: MediaQuery.of(context).size.height * 0.1,
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.13,
+              height: MediaQuery.of(context).size.height * 0.26,
               width: MediaQuery.of(context).size.width * 0.7,
               decoration: BoxDecoration(
                 border: Border.all(
@@ -39,6 +39,52 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[300],
+                          ),
+                          hintText: 'First Name',
+                          prefixIcon: Icon(Icons.person, color: Colors.black),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(top: 5),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Divider(
+                        height: 10,
+                        thickness: 1,
+                        color: Colors.grey[200],
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey[300],
+                          ),
+                          hintText: 'Last Name',
+                          prefixIcon: Icon(Icons.person, color: Colors.black),
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(top: 5),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Divider(
+                        height: 10,
+                        thickness: 1,
+                        color: Colors.grey[200],
+                      ),
+                    ),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: TextField(
