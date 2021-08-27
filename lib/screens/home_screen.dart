@@ -1,9 +1,15 @@
 import 'package:circadia/controllers/firebase_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends GetWidget<FirebaseController> {
+  // String name;
+  // Home(this.name);
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   final FirebaseController controller = FirebaseController();
   var scaffoldkey = GlobalKey<ScaffoldState>();
   @override
@@ -75,13 +81,13 @@ class Home extends GetWidget<FirebaseController> {
                         child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.black,
-                      backgroundImage: AssetImage("assets/Logo.png"),
+                      backgroundImage: AssetImage("assets/person.png"),
                     )),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "Ishaq Hassan",
+                      "Hello",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ],

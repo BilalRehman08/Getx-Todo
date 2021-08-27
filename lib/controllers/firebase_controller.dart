@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseController extends GetxController {
-
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   Rxn<User> _firebaseUser = Rxn<User>();
@@ -15,10 +14,7 @@ class FirebaseController extends GetxController {
 
   @override
   void onInit() {
-    
     _firebaseUser.bindStream(_auth.authStateChanges());
-
-    print(" Auth Change :   ${_auth.currentUser}");
   }
 
   // function to createuser, login and sign out user
@@ -45,6 +41,14 @@ class FirebaseController extends GetxController {
   }
 
   void login(String email, String password) async {
+    // var _userName;
+    // FirebaseFirestore.instance
+    //     .collection('Users')
+    //     .doc(FirebaseAuth.instance.currentUser.uid)
+    //     .get()
+    //     .then((value) {
+    //   _userName = value.data()['First Name'].toString();
+    // });
     await _auth
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) => Get.offAll(Home()))
