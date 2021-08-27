@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
             ),
             preferredSize: Size.fromHeight(60.0)),
       ),
-      drawer: drawerr(),
+      drawer: drawerr(context),
       body: Center(child: Text("data")),
     );
   }
