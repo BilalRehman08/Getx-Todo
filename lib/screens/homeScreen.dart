@@ -13,13 +13,13 @@ class _HomeState extends State<Home> {
       key: scaffoldkey,
       appBar: AppBar(
         title: Container(
+          padding: const EdgeInsets.only(top: 15),
           height: 50,
-          width: 100,
+          width: 110,
           child: Image.asset("assets/ThingsTOD.png"),
         ),
         leading: Padding(
-          padding:
-              const EdgeInsets.only(left: 10.0, right: 10, top: 8, bottom: 6),
+          padding: const EdgeInsets.only(left: 15.0, top: 15),
           child: GestureDetector(
               onTap: () {
                 scaffoldkey.currentState.openDrawer();
@@ -28,6 +28,13 @@ class _HomeState extends State<Home> {
                 "assets/menubar.png",
               )),
         ),
+        actions: [
+          Container(
+            padding: const EdgeInsets.only(right: 15, top: 15),
+            height: 40,
+            child: Image.asset("assets/addd.png"),
+          ),
+        ],
         bottom: PreferredSize(
             child: Icon(
               Icons.linear_scale,
