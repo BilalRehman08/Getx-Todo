@@ -25,40 +25,26 @@ class FirebaseController extends GetxController {
 
   void createUser(
       String firstname, String lastname, String email, String password) async {
-    UserCredential result = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
-    User user = result.user;
+    CollectionReference reference =
+        FirebaseFirestore.instance.collection("Users");
 
-    await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+    Map<String, String> userdata = {
       "First Name": firstname,
       "Last Name": lastname,
       "Email": email
-    }).then((value) {
-      Get.offAll(Login());
+    };
+
+    await _auth
+        .createUserWithEmailAndPassword(email: email, password: password)
+        .then((value) {
+      reference.add(userdata).then((value) => Get.offAll(Login()));
     }).catchError(
       (onError) =>
           Get.snackbar("Error while creating account ", onError.message),
     );
-
-    // await _auth
-    //     .createUserWithEmailAndPassword(email: email, password: password)
-    //     .then((value) {
-    //   reference.add(userdata).then((value) => Get.offAll(Login()));
-    // }).catchError(
-    //   (onError) =>
-    //       Get.snackbar("Error while creating account ", onError.message),
-    // );
   }
 
   void login(String email, String password) async {
-    var _userName;
-    FirebaseFirestore.instance
-        .collection('Users')
-        .doc((await FirebaseAuth.instance.currentUser).uid)
-        .get()
-        .then((value) {
-      _userName = value.data()['First Name'].toString();
-    });
     await _auth
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) => Get.offAll(Home()))

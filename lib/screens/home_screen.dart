@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends GetWidget<FirebaseController> {
-  // String name;
-  // Home(this.name);
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   final FirebaseController controller = FirebaseController();
@@ -87,7 +85,7 @@ class Home extends GetWidget<FirebaseController> {
                       height: 10,
                     ),
                     Text(
-                      "Hello",
+                      "${auth.currentUser.email}",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ],
