@@ -1,14 +1,17 @@
 import 'package:circadia/controllers/firebase_controller.dart';
+import 'package:circadia/controllers/home_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Home extends GetWidget<FirebaseController> {
+class Home extends GetView<HomeController> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  final FirebaseController controller = FirebaseController();
+  final HomeController controller = Get.put(HomeController());
+
+  final FirebaseController controllerr = FirebaseController();
   var scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -113,7 +116,7 @@ class Home extends GetWidget<FirebaseController> {
                   ),
                   ListTile(
                     onTap: () {
-                      controller.signout();
+                      controllerr.signout();
                     },
                     contentPadding: const EdgeInsets.only(left: 25),
                     leading: Icon(
@@ -132,7 +135,33 @@ class Home extends GetWidget<FirebaseController> {
           ],
         ),
       ),
-      body: Center(child: Text("data")),
+      body: controller.obx(
+        (data) => ListView.builder(
+            padding: EdgeInsets.all(8),
+            itemCount: data.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      // leading: CircleAvatar(
+                      //   radius: 30,
+                      //   backgroundImage: NetworkImage("data['description]"),
+                      // ),
+                      title: Text("${data[index]['description']}"),
+                      // subtitle:
+                      // trailing: Text(
+                      //   "Age : " + data[index]['dob']['age'].toString(),
+                      // ),
+                    )
+                  ],
+                ),
+              );
+            }),
+        onError: (error) => Center(
+          child: Text(error),
+        ),
+      ),
     );
   }
 }

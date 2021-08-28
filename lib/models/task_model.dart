@@ -1,4 +1,4 @@
-class TaskModel {
+class User {
   String id;
   String title;
   String description;
@@ -8,7 +8,7 @@ class TaskModel {
   String userId;
   bool isCompleted;
 
-  TaskModel(
+  User(
       {this.id,
       this.title,
       this.description,
@@ -18,7 +18,7 @@ class TaskModel {
       this.userId,
       this.isCompleted});
 
-  TaskModel.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     description = json['description'];
