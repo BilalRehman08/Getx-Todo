@@ -2,6 +2,7 @@
 // import 'package:circadia/screens/loginScreen.dart';
 
 import 'package:circadia/screens/login_screen.dart';
+import 'package:circadia/screens/signup_screen.dart';
 
 import 'package:circadia/widgets/instance_binding.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff6035D0),
       ),
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: Signup(),
     );
   }
 }
