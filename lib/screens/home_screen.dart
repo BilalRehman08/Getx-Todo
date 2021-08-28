@@ -1,5 +1,6 @@
 import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:circadia/controllers/home_controller.dart';
+import 'package:circadia/screens/addtask.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
@@ -36,9 +37,14 @@ class Home extends GetView<HomeController> {
               )),
         ),
         actions: [
-          Container(
-            padding: const EdgeInsets.only(right: 15, top: 16, bottom: 16),
-            child: Image.asset("assets/addd.png"),
+          GestureDetector(
+            onTap: () {
+              Get.offAll(AddTask());
+            },
+            child: Container(
+              padding: const EdgeInsets.only(right: 15, top: 16, bottom: 16),
+              child: Image.asset("assets/addd.png"),
+            ),
           ),
         ],
         bottom: PreferredSize(
@@ -101,6 +107,9 @@ class Home extends GetView<HomeController> {
               child: Column(
                 children: [
                   ListTile(
+                    onTap: () {
+                      Get.offAll(AddTask());
+                    },
                     contentPadding: const EdgeInsets.only(left: 15),
                     leading: Icon(
                       Icons.add,

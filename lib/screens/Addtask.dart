@@ -1,4 +1,6 @@
+import 'package:circadia/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
 
 enum Priority { red, orange, blue, green }
 
@@ -14,7 +16,14 @@ class _AddTaskState extends State<AddTask> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        leading: GestureDetector(onTap: () {}, child: Icon(Icons.arrow_back)),
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+            },
+            child: Icon(Icons.arrow_back)),
         title: Text(
           "New Task",
           style: TextStyle(fontSize: 17),
