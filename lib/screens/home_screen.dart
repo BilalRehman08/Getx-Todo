@@ -10,7 +10,10 @@ import 'package:get/get.dart';
 class Home extends GetView<HomeController> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  final HomeController controller = Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
+  setState() {
+    controller = Get.put(HomeController());
+  }
 
   final FirebaseController controllerr = FirebaseController();
   var scaffoldkey = GlobalKey<ScaffoldState>();

@@ -1,5 +1,3 @@
-
-
 class User {
   String id;
   String title;

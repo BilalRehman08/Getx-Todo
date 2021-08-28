@@ -166,14 +166,14 @@ class _AddTaskState extends State<AddTask> {
               onPressed: () {
                 setState(() {
                   _futureUser = createUser(
-                    1,
+                    "1",
                     "${taskname.text}",
                     "${description.text}",
                     "${category.text}",
-                    "${datatime.text}",
-                    "$_character",
+                    42352352353,
+                    3,
                     "user id 200",
-                    "true",
+                    true,
                   );
                 });
                 Navigator.push(

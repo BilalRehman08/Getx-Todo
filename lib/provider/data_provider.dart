@@ -16,21 +16,29 @@ class UserProvider extends GetConnect {
   }
 }
 
-Future<User> createUser(var id, var title, var description, var category,
-    var timestamp, var priority, var userId, var isCompleted) async {
+Future<User> createUser(
+  String id,
+  String title,
+  String description,
+  String category,
+  int timestamp,
+  int priority,
+  String userId,
+  bool isCompleted,
+) async {
   final response = await http.post(
     Uri.parse('https://6087dddba6f4a30017425143.mockapi.io/api/todos'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
+    body: jsonEncode(<String, dynamic>{
       'id': id,
       'title': title,
       'description': description,
       'category': category,
       'timestamp': timestamp,
       'priority': priority,
-      'userId': userId,
+      'user_id': userId,
       'isCompleted': isCompleted
     }),
   );

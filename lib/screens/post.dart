@@ -177,10 +177,10 @@ class _PosttState extends State<Postt> {
                     taskname.text,
                     description.text,
                     category.text,
-                    datatime.text,
-                    "$_character",
+                    325235235,
+                    8,
                     "user id 200",
-                    "true",
+                    true,
                   );
                 });
                 // Navigator.push(
