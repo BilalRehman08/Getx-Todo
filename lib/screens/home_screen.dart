@@ -16,6 +16,7 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       key: scaffoldkey,
       appBar: AppBar(
         title: Container(
@@ -175,8 +176,12 @@ class Home extends GetView<HomeController> {
                   color: Colors.red,
                   alignment: Alignment.centerRight,
                 ),
-                child: ListTile(
-                  title: Text("${data[index]['title']}"),
+                child: Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  child: ListTile(
+                    title: Text("${data[index]['title']}"),
+                  ),
                 ),
               );
             }),
