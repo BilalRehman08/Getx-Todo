@@ -255,7 +255,6 @@ class Home extends GetView<HomeController> {
                             subtitle: Text("${data[index]['description']}"),
                             trailing: Container(
                               width: 60,
-                              // padding: const EdgeInsets.only(top: 25),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
