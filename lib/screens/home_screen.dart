@@ -137,7 +137,6 @@ class Home extends GetView<HomeController> {
       ),
       body: controller.obx(
         (data) => ListView.builder(
-            padding: EdgeInsets.all(8),
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
               var item = data[index]['title'];
@@ -147,12 +146,32 @@ class Home extends GetView<HomeController> {
                   data.removeAt(index);
                 },
                 background: Container(
-                  child: Icon(Icons.delete),
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 20,
+                        width: 20,
+                        child: Image.asset("assets/clipboards.png"),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "Open",
+                        style: TextStyle(fontSize: 17, color: Colors.white),
+                      )
+                    ],
+                  ),
                   color: Colors.green,
                   alignment: Alignment.centerLeft,
                 ),
                 secondaryBackground: Container(
-                  child: Icon(Icons.thumb_up),
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    "Remove",
+                    style: TextStyle(fontSize: 17, color: Colors.white),
+                  ),
                   color: Colors.red,
                   alignment: Alignment.centerRight,
                 ),
