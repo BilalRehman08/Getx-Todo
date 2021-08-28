@@ -30,14 +30,6 @@ class _AddTaskState extends State<AddTask> {
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
-          leading: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Home()),
-                );
-              },
-              child: Icon(Icons.arrow_back)),
           title: Text(
             "New Task",
             style: TextStyle(fontSize: 17),
@@ -176,10 +168,6 @@ class _AddTaskState extends State<AddTask> {
                     true,
                   );
                 });
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Home()),
-                );
               },
               style: ElevatedButton.styleFrom(
                 primary: Color(0xff6035D0),
@@ -198,7 +186,7 @@ class _AddTaskState extends State<AddTask> {
       future: _futureUser,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text("${snapshot.data.title}");
+          return Center(child: Text("Successfully Post"));
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

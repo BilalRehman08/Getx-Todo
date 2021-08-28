@@ -2,7 +2,6 @@
 // import 'package:circadia/screens/loginScreen.dart';
 
 import 'package:circadia/screens/login_screen.dart';
-import 'package:circadia/screens/post.dart';
 
 import 'package:circadia/widgets/instance_binding.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -1,19 +1,16 @@
 import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:circadia/controllers/home_controller.dart';
 import 'package:circadia/screens/addtask.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Home extends GetView<HomeController> {
+  final contt = Get.lazyPut<HomeController>(() => HomeController());
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   HomeController controller = Get.put(HomeController());
-  setState() {
-    controller = Get.put(HomeController());
-  }
 
   final FirebaseController controllerr = FirebaseController();
   var scaffoldkey = GlobalKey<ScaffoldState>();
