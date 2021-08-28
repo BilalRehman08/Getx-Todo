@@ -1,6 +1,7 @@
 // import 'package:circadia/screens/Addtask.dart';
 // import 'package:circadia/screens/loginScreen.dart';
 
+import 'package:circadia/screens/dashboard.dart';
 import 'package:circadia/screens/login_screen.dart';
 
 import 'package:circadia/widgets/instance_binding.dart';

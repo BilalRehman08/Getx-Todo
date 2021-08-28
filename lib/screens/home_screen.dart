@@ -140,21 +140,24 @@ class Home extends GetView<HomeController> {
             padding: EdgeInsets.all(8),
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
-              return Card(
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      // leading: CircleAvatar(
-                      //   radius: 30,
-                      //   backgroundImage: NetworkImage("data['description]"),
-                      // ),
-                      title: Text("${data[index]['description']}"),
-                      // subtitle:
-                      // trailing: Text(
-                      //   "Age : " + data[index]['dob']['age'].toString(),
-                      // ),
-                    )
-                  ],
+              var item = data[index]['title'];
+              return Dismissible(
+                key: Key(item),
+                onDismissed: (DismissDirection dir) {
+                  data.removeAt(index);
+                },
+                background: Container(
+                  child: Icon(Icons.delete),
+                  color: Colors.green,
+                  alignment: Alignment.centerLeft,
+                ),
+                secondaryBackground: Container(
+                  child: Icon(Icons.thumb_up),
+                  color: Colors.red,
+                  alignment: Alignment.centerRight,
+                ),
+                child: ListTile(
+                  title: Text("${data[index]['title']}"),
                 ),
               );
             }),
