@@ -13,6 +13,14 @@ class Data extends GetView<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Get.offAll(Home());
+          },
+          child: Icon(
+            Icons.arrow_back,
+          ),
+        ),
         title: Center(child: Text("Data")),
       ),
       body: Column(

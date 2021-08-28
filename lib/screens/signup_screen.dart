@@ -1,4 +1,5 @@
 import 'package:circadia/controllers/firebase_controller.dart';
+import 'package:circadia/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,7 @@ class Signup extends GetWidget<FirebaseController> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.1,
             ),
             Center(
               child: Container(
@@ -145,6 +146,20 @@ class Signup extends GetWidget<FirebaseController> {
                 onPressed: () {
                   controller.createUser(
                       firstname.text, lastname.text, email.text, password.text);
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Color(0xff6035D0),
+                    textStyle: TextStyle(fontSize: 17)),
+              ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.06,
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: ElevatedButton(
+                child: Text('Or Login'),
+                onPressed: () {
+                  Get.offAll(Login());
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Color(0xff6035D0),
