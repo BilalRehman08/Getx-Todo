@@ -73,6 +73,7 @@ class _AddTaskState extends State<AddTask> {
                     contentPadding: const EdgeInsets.all(15)),
               ),
               TextField(
+                keyboardType: TextInputType.number,
                 controller: datatime,
                 decoration: InputDecoration(
                     hintStyle: TextStyle(fontSize: 13, color: Colors.grey[400]),
