@@ -53,3 +53,14 @@ Future<User> createUser(
     throw Exception('Failed to create User.');
   }
 }
+
+Future<http.Response> deleteUser(String id) async {
+  final http.Response response = await http.delete(
+    Uri.parse('https://6087dddba6f4a30017425143.mockapi.io/api/todos/$id'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+
+  return response;
+}

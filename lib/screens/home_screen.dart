@@ -1,5 +1,6 @@
 import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:circadia/controllers/home_controller.dart';
+import 'package:circadia/provider/data_provider.dart';
 import 'package:circadia/screens/addtask.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 import 'data.dart';
 
 class Home extends GetView<HomeController> {
+  Future<User> _futureUser;
   final contt = Get.lazyPut<HomeController>(() => HomeController());
   final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -167,7 +169,9 @@ class Home extends GetView<HomeController> {
                         data[index]['category'],
                       ));
                     } else {
+                      deleteUser(data[index]['id']);
                       data.removeAt(index);
+                      Get.offAll(Home());
                     }
                   },
                   background: Container(
