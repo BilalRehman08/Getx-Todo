@@ -194,51 +194,75 @@ class Home extends GetView<HomeController> {
                   child: Card(
                     color: Colors.white,
                     elevation: 2,
-                    child: ListTile(
-                      leading: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("$formattedTime"),
-                          SizedBox(
-                            height: 5,
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: ClipPath(
+                            clipper: MyCustomClipper(),
+                            child: Container(
+                                width: 80.0,
+                                height: 20.0,
+                                color: Colors.green,
+                                alignment: Alignment.topCenter,
+                                padding: EdgeInsets.only(left: 7, top: 2),
+                                child: Text(
+                                  "Yesterday",
+                                  style: TextStyle(
+                                      fontSize: 14.0, color: Colors.white),
+                                )),
                           ),
-                          Container(
-                            child: timeeee > 12
-                                ? Text(
-                                    "P.M",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )
-                                : Text(
-                                    "A.M",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                          )
-                        ],
-                      ),
-                      title: Text("${data[index]['title']}"),
-                      subtitle: Text("${data[index]['description']}"),
-                      trailing: Container(
-                        width: 60,
-                        // padding: const EdgeInsets.only(top: 25),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(Icons.star),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            CircleAvatar(
-                              backgroundColor:
-                                  "${data[index]['priority']}" == "9"
-                                      ? Colors.red
-                                      : Colors.green,
-                              radius: 8,
-                            ),
-                          ],
                         ),
-                      ),
+                        Align(
+                          heightFactor: 0.8,
+                          child: ListTile(
+                            leading: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("$formattedTime"),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  child: timeeee > 12
+                                      ? Text(
+                                          "P.M",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : Text(
+                                          "A.M",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                )
+                              ],
+                            ),
+                            title: Text("${data[index]['title']}"),
+                            subtitle: Text("${data[index]['description']}"),
+                            trailing: Container(
+                              width: 60,
+                              // padding: const EdgeInsets.only(top: 25),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Icon(Icons.star),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  CircleAvatar(
+                                    backgroundColor:
+                                        "${data[index]['priority']}" == "9"
+                                            ? Colors.red
+                                            : Colors.green,
+                                    radius: 8,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ));
             }),
@@ -248,4 +272,20 @@ class Home extends GetView<HomeController> {
       ),
     );
   }
+}
+
+class MyCustomClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path()
+      ..lineTo(size.width, 0)
+      ..lineTo(size.width, size.height)
+      ..lineTo(size.width / 5.5, size.height)
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

@@ -1,17 +1,24 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:circadia/models/task_model.dart';
 import 'package:circadia/provider/data_provider.dart';
-import 'package:circadia/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get_core/get_core.dart';
+import 'package:http/http.dart' as http;
+
+import 'addtask.dart';
+import 'home_screen.dart';
+
+class Postt extends StatefulWidget {
+  @override
+  _PosttState createState() {
+    return _PosttState();
+  }
+}
 
 enum Priority { red, orange, blue, green }
 
-class AddTask extends StatefulWidget {
-  @override
-  _AddTaskState createState() => _AddTaskState();
-}
-
-class _AddTaskState extends State<AddTask> {
+class _PosttState extends State<Postt> {
   Priority _character = Priority.red;
   final TextEditingController taskname = TextEditingController();
   final TextEditingController description = TextEditingController();
@@ -166,20 +173,20 @@ class _AddTaskState extends State<AddTask> {
               onPressed: () {
                 setState(() {
                   _futureUser = createUser(
-                    1,
-                    "${taskname.text}",
-                    "${description.text}",
-                    "${category.text}",
-                    "${datatime.text}",
+                    "2",
+                    taskname.text,
+                    description.text,
+                    category.text,
+                    datatime.text,
                     "$_character",
                     "user id 200",
                     "true",
                   );
                 });
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Home()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => Home()),
+                // );
               },
               style: ElevatedButton.styleFrom(
                 primary: Color(0xff6035D0),
@@ -198,7 +205,7 @@ class _AddTaskState extends State<AddTask> {
       future: _futureUser,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text("${snapshot.data.title}");
+          return Text(snapshot.data.title);
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

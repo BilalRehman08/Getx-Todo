@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:circadia/models/task_model.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class UserProvider extends GetConnect {
   Future<List<dynamic>> getUser() async {
@@ -12,5 +16,32 @@ class UserProvider extends GetConnect {
   }
 }
 
+Future<User> createUser(var id, var title, var description, var category,
+    var timestamp, var priority, var userId, var isCompleted) async {
+  final response = await http.post(
+    Uri.parse('https://6087dddba6f4a30017425143.mockapi.io/api/todos'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'id': id,
+      'title': title,
+      'description': description,
+      'category': category,
+      'timestamp': timestamp,
+      'priority': priority,
+      'userId': userId,
+      'isCompleted': isCompleted
+    }),
+  );
 
-//get generate model on home from https://randomuser.me/api/?results=10
+  if (response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create User.');
+  }
+}
