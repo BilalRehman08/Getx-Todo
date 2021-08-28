@@ -142,48 +142,81 @@ class Home extends GetView<HomeController> {
             itemBuilder: (BuildContext context, int index) {
               var item = data[index]['title'];
               return Dismissible(
-                key: Key(item),
-                onDismissed: (DismissDirection dir) {
-                  data.removeAt(index);
-                },
-                background: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 20,
-                        width: 20,
-                        child: Image.asset("assets/clipboards.png"),
+                  key: Key(item),
+                  onDismissed: (DismissDirection dir) {
+                    data.removeAt(index);
+                  },
+                  background: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 20,
+                          width: 20,
+                          child: Image.asset("assets/clipboards.png"),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "Open",
+                          style: TextStyle(fontSize: 17, color: Colors.white),
+                        )
+                      ],
+                    ),
+                    color: Colors.green,
+                    alignment: Alignment.centerLeft,
+                  ),
+                  secondaryBackground: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      "Remove",
+                      style: TextStyle(fontSize: 17, color: Colors.white),
+                    ),
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                  ),
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 2,
+                    child: ListTile(
+                      leading: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("10:00"),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "A.M",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
-                      SizedBox(
-                        width: 15,
+                      title: Text("${data[index]['title']}"),
+                      subtitle: Text("${data[index]['description']}"),
+                      trailing: Container(
+                        width: 60,
+                        // padding: const EdgeInsets.only(top: 25),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(Icons.star),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            CircleAvatar(
+                              backgroundColor:
+                                  "${data[index]['priority']}" == "9"
+                                      ? Colors.red
+                                      : Colors.green,
+                              radius: 8,
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        "Open",
-                        style: TextStyle(fontSize: 17, color: Colors.white),
-                      )
-                    ],
-                  ),
-                  color: Colors.green,
-                  alignment: Alignment.centerLeft,
-                ),
-                secondaryBackground: Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    "Remove",
-                    style: TextStyle(fontSize: 17, color: Colors.white),
-                  ),
-                  color: Colors.red,
-                  alignment: Alignment.centerRight,
-                ),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 2,
-                  child: ListTile(
-                    title: Text("${data[index]['title']}"),
-                  ),
-                ),
-              );
+                    ),
+                  ));
             }),
         onError: (error) => Center(
           child: Text(error),
