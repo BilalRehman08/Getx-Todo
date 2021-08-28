@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'data.dart';
+
 class Home extends GetView<HomeController> {
   final contt = Get.lazyPut<HomeController>(() => HomeController());
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -159,7 +161,15 @@ class Home extends GetView<HomeController> {
               return Dismissible(
                   key: Key(item),
                   onDismissed: (DismissDirection dir) {
-                    data.removeAt(index);
+                    if (dir == DismissDirection.startToEnd) {
+                      Get.offAll(Data(
+                        data[index]['title'],
+                        data[index]['description'],
+                        data[index]['category'],
+                      ));
+                    } else {
+                      data.removeAt(index);
+                    }
                   },
                   background: Container(
                     padding: const EdgeInsets.all(10),
