@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff6035D0),
       ),
       debugShowCheckedModeBanner: false,
-      home: Login(),
-      routes: {
-        '/login_screen': (context) => Login(),
-      },
+      home: Signup(),
     );
   }
 }
