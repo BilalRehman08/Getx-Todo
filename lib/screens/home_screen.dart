@@ -2,7 +2,7 @@ import 'package:circadia/controllers/firebase_controller.dart';
 import 'package:circadia/controllers/home_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -140,6 +140,12 @@ class Home extends GetView<HomeController> {
         (data) => ListView.builder(
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
+              var time = data[index]['timestamp'];
+              var timee = DateTime.fromMicrosecondsSinceEpoch(time);
+              String formattedTime = DateFormat.Hm().format(timee);
+              String format = DateFormat.H().format(timee);
+              var timeeee = double.parse(format);
+              print(formattedTime);
               var item = data[index]['title'];
               return Dismissible(
                   key: Key(item),
@@ -183,13 +189,22 @@ class Home extends GetView<HomeController> {
                       leading: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("10:00"),
+                          Text("$formattedTime"),
                           SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            "A.M",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          Container(
+                            child: timeeee > 12
+                                ? Text(
+                                    "P.M",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                : Text(
+                                    "A.M",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
                           )
                         ],
                       ),
